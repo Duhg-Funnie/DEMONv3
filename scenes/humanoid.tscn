@@ -1,0 +1,247 @@
+[gd_scene load_steps=33 format=3 uid="uid://bjhdv5h6vclq3"]
+
+[ext_resource type="Script" path="res://scripts/humanoid.gd" id="1_l5b4n"]
+[ext_resource type="Texture2D" uid="uid://blut7necsub18" path="res://textures/texture_dirt.png" id="3_pp5ft"]
+[ext_resource type="Texture2D" uid="uid://dcxss683y6alb" path="res://textures/texture_metal.png" id="4_s8eaf"]
+[ext_resource type="Texture2D" uid="uid://j13s1vux7wq" path="res://textures/texture_cobble.png" id="5_ue20h"]
+[ext_resource type="Texture2D" uid="uid://dp0g4mikysao2" path="res://textures/texture_snow.png" id="5_y0jer"]
+[ext_resource type="Texture2D" uid="uid://pc3vfmlr4kby" path="res://textures/ui_box_1.png" id="6_b3ina"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3strv"]
+albedo_color = Color(0.545098, 0.0196078, 0.105882, 1)
+metallic = 1.0
+metallic_specular = 0.58
+roughness = 0.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7msfl"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 8.765, 0)
+spread = 13.83
+gravity = Vector3(0, 20, 0)
+linear_accel_min = -100.0
+linear_accel_max = 2.0
+radial_accel_min = -8.1
+radial_accel_max = 2.71
+angle_min = -720.0
+angle_max = -720.0
+scale_min = 0.1
+scale_max = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_6c67g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83dgj"]
+albedo_color = Color(0.964706, 0.933333, 0.952941, 1)
+albedo_texture = ExtResource("3_pp5ft")
+metallic_specular = 0.0
+metallic_texture_channel = 2
+normal_scale = -8.08
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h04t7"]
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hjv05"]
+albedo_texture = ExtResource("4_s8eaf")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b2p0l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojqcs"]
+albedo_color = Color(0.345098, 0.305882, 0.192157, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roa25"]
+albedo_texture = ExtResource("4_s8eaf")
+
+[sub_resource type="SphereMesh" id="SphereMesh_nonum"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v77a8"]
+albedo_color = Color(0.941176, 0.34902, 0.839216, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwpoa"]
+albedo_color = Color(0.521569, 0.466667, 0.419608, 1)
+albedo_texture = ExtResource("5_y0jer")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0ncl"]
+albedo_color = Color(0.156863, 0.262745, 0.301961, 1)
+metallic = 0.35
+roughness = 0.45
+emission_enabled = true
+emission = Color(0.611765, 0.0313726, 0.0784314, 1)
+emission_energy_multiplier = 0.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c3oaq"]
+height = 2.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fqwlc"]
+radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tj0t8"]
+albedo_texture = ExtResource("5_ue20h")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_esmcy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ixxj"]
+albedo_texture = ExtResource("5_ue20h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6av1"]
+albedo_texture = ExtResource("6_b3ina")
+
+[sub_resource type="BoxMesh" id="BoxMesh_nwl02"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxj2v"]
+albedo_texture = ExtResource("6_b3ina")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3gtv0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66wm0"]
+albedo_texture = ExtResource("6_b3ina")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_08s61"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8qjt3"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_max = 1.46
+damping_min = 54.745
+damping_max = 100.0
+angle_min = -183.9
+angle_max = -173.4
+scale_min = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_t5s07"]
+text = "got you bitch"
+
+[node name="humanoid" type="CharacterBody3D" groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 0.988348, 0.15221, 0, -0.15221, 0.988348, 0, 1.2577, 0.0691571)
+script = ExtResource("1_l5b4n")
+
+[node name="blood" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0896431, -0.0184515, -0.225359)
+visible = false
+material_override = SubResource("StandardMaterial3D_3strv")
+cast_shadow = 0
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_7msfl")
+draw_passes = 2
+draw_pass_1 = SubResource("SphereMesh_6c67g")
+draw_pass_2 = null
+
+[node name="dirt" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0896431, -1.18673, -0.000690345)
+visible = false
+material_override = SubResource("StandardMaterial3D_83dgj")
+emitting = false
+amount = 25
+collision_base_size = 28.96
+visibility_aabb = AABB(-4, -4, -3.96729, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_7msfl")
+draw_pass_1 = SubResource("PlaneMesh_h04t7")
+
+[node name="body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0981601, -0.120683)
+material_override = SubResource("StandardMaterial3D_hjv05")
+gi_mode = 0
+mesh = SubResource("CapsuleMesh_b2p0l")
+surface_material_override/0 = SubResource("StandardMaterial3D_ojqcs")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="body"]
+transform = Transform3D(0.92, 0, 0, 0, 0.95, 1.11759e-08, 0, 0, 0.77, 0, 0.771814, -0.0846149)
+material_override = SubResource("StandardMaterial3D_roa25")
+mesh = SubResource("SphereMesh_nonum")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_v77a8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="body"]
+transform = Transform3D(0.725, 0, 0, 0, 0.725, 0, 0, 0, 0.725, 0, 0.832963, -0.128304)
+material_override = SubResource("StandardMaterial3D_cwpoa")
+mesh = SubResource("SphereMesh_nonum")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_v77a8")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="body/MeshInstance3D2"]
+transform = Transform3D(0.213793, 0, 0, 0, 0.213793, 0, 0, 0, 0.213793, -0.158308, 0.0676253, -0.40084)
+mesh = SubResource("SphereMesh_nonum")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_q0ncl")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="body/MeshInstance3D2"]
+transform = Transform3D(0.213793, 0, 0, 0, 0.213793, 0, 0, 0, 0.213793, 0.159504, 0.0676253, -0.40084)
+mesh = SubResource("SphereMesh_nonum")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_q0ncl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0731448, -0.249298)
+shape = SubResource("CapsuleShape3D_c3oaq")
+
+[node name="melee" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0906912, -0.120683)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="melee"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00718629, 0.206493, -0.997503)
+shape = SubResource("SphereShape3D_fqwlc")
+
+[node name="health" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42624, 0)
+visible = false
+billboard = 1
+text = "health"
+
+[node name="name" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70193, 0)
+visible = false
+billboard = 1
+text = "name"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="l_wheel" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00896891, 0.139983, 0, -0.57093, -0.00219903, 0, 0, 0, 0.571, -0.422017, -0.919735, -0.47073)
+material_override = SubResource("StandardMaterial3D_tj0t8")
+mesh = SubResource("CylinderMesh_esmcy")
+
+[node name="r_wheel" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00896891, 0.139983, 0, -0.57093, -0.00219903, 0, 7.45058e-09, 0, 0.571, 0.422356, -0.919735, -0.47073)
+material_override = SubResource("StandardMaterial3D_7ixxj")
+mesh = SubResource("CylinderMesh_esmcy")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.690001, 0, 0, 0, 0.17, 0, 0, 0, 0.445, 0, -0.914804, -0.352035)
+material_override = SubResource("StandardMaterial3D_q6av1")
+mesh = SubResource("BoxMesh_nwl02")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.633568, 0.00335636, 0, -0.0426258, 0.0498873, 0, -0.336974, -0.643122)
+material_override = SubResource("StandardMaterial3D_vxj2v")
+mesh = SubResource("CylinderMesh_3gtv0")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-09, -0.24, 2.40542e-17, 0.1, -1.04907e-08, 9.31323e-10, -9.31323e-10, 1.11022e-16, 0.1, 0, 0.276041, -0.684406)
+material_override = SubResource("StandardMaterial3D_66wm0")
+mesh = SubResource("CylinderMesh_08s61")
+
+[node name="flames" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.991418, 0.130734, 0, -0.130734, -0.991418, 0, 0.664836, -0.950117)
+visible = false
+amount = 10
+lifetime = 0.53
+speed_scale = 3.18
+explosiveness = 0.2
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8qjt3")
+draw_pass_1 = SubResource("TextMesh_t5s07")
+
+[connection signal="body_entered" from="melee" to="." method="_on_melee_body_entered"]
+[connection signal="body_exited" from="melee" to="." method="_on_melee_body_exited"]

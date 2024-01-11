@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://bf4323d3ihwuu"]
+
+[ext_resource type="Script" path="res://scripts/humanoid_2.gd" id="1_d58gg"]
+[ext_resource type="Material" uid="uid://bhlp5qlejp24" path="res://textures/blood.tres" id="2_prxee"]
+[ext_resource type="Material" uid="uid://dfi4308m8um3f" path="res://textures/texture_spawn_crystal.tres" id="3_foeew"]
+[ext_resource type="ArrayMesh" uid="uid://ocjobvf4wgji" path="res://objects/rock.obj" id="4_j7v4f"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tddqi"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 8.765, 0)
+spread = 13.83
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -8.1
+radial_accel_max = 2.71
+angle_min = -720.0
+angle_max = -720.0
+scale_min = 0.1
+scale_max = 0.4
+
+[sub_resource type="PrismMesh" id="PrismMesh_nwbyb"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bps0k"]
+transparency = 1
+albedo_color = Color(1, 0.333333, 1, 0.129412)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7msfl"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 8.765, 0)
+spread = 13.83
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -8.1
+radial_accel_max = 2.71
+angle_min = -720.0
+angle_max = -720.0
+scale_min = 0.1
+scale_max = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_mtsvp"]
+radius = 0.1
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojqcs"]
+albedo_color = Color(0.345098, 0.305882, 0.192157, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c3oaq"]
+height = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fqwlc"]
+radius = 0.399858
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xhqub"]
+top_radius = 0.0
+bottom_radius = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_nonum"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0ncl"]
+albedo_color = Color(0.156863, 0.262745, 0.301961, 1)
+emission_enabled = true
+emission = Color(0.67451, 0.435294, 0.207843, 1)
+emission_energy_multiplier = 6.62
+
+[node name="humanoid" type="CharacterBody3D" groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0293121, 0.0139527)
+motion_mode = 1
+script = ExtResource("1_d58gg")
+
+[node name="blood" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0.108327, -0.129666, 0.0364353)
+visible = false
+material_override = ExtResource("2_prxee")
+amount = 80
+explosiveness = 0.32
+process_material = SubResource("ParticleProcessMaterial_tddqi")
+draw_pass_1 = SubResource("PrismMesh_nwbyb")
+
+[node name="magic" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0543776, -0.0505056, 0.0348483)
+material_override = SubResource("StandardMaterial3D_bps0k")
+amount = 10
+collision_base_size = 28.96
+visibility_aabb = AABB(-4, -4, -3.96729, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_7msfl")
+draw_pass_1 = SubResource("SphereMesh_mtsvp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.335, 0, 0, 0, -0.00299355, -0.334987, 0, 0.334987, -0.00299355, -0.0629898, -0.0381155, -0.445659)
+material_override = ExtResource("3_foeew")
+mesh = ExtResource("4_j7v4f")
+surface_material_override/0 = SubResource("StandardMaterial3D_ojqcs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0352654, 0.0469642, 0)
+shape = SubResource("CapsuleShape3D_c3oaq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = -3.0
+
+[node name="melee" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0352654, -0.133558, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="melee"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00718629, -0.0892055, -1.23557)
+shape = SubResource("SphereShape3D_fqwlc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.744952, -0.0033769, -0.00121243, -7.58153e-09, -0.0400619, 0.786841, -0.00849056, -0.296285, -0.106378, 0.0137279, -0.0237958, -0.604312)
+material_override = ExtResource("3_foeew")
+mesh = SubResource("CylinderMesh_xhqub")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0.0217206, 0.217299, -0.254427)
+mesh = SubResource("SphereMesh_nonum")
+surface_material_override/0 = SubResource("StandardMaterial3D_q0ncl")
+
+[node name="name" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0340939, 0.803784, -0.132037)
+visible = false
+billboard = 1
+text = "name"

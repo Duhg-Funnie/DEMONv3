@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://d143h8cbh0y6v"]
+
+[ext_resource type="Script" path="res://scripts/pickup_ammo.gd" id="1_50lcu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8bcr2"]
+emission_enabled = true
+emission = Color(0.384314, 0.384314, 0.698039, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vbqfm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bygte"]
+radius = 0.8
+
+[node name="ammo" type="Node3D"]
+script = ExtResource("1_50lcu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 0, 0.137833, 0)
+material_override = SubResource("StandardMaterial3D_8bcr2")
+mesh = SubResource("BoxMesh_vbqfm")
+
+[node name="ammo" type="Area3D" parent="."]
+monitorable = false
+
+[node name="ammo" type="CollisionShape3D" parent="ammo"]
+shape = SubResource("SphereShape3D_bygte")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.865606, 0)
+visible = false
+billboard = 1
+text = "ammo
+"
+
+[connection signal="body_entered" from="ammo" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://crkwhhbruf0sm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vemfr"]
+albedo_color = Color(0.537255, 0.223529, 0.309804, 1)
+metallic = 0.62
+metallic_specular = 0.0
+roughness = 0.68
+emission_enabled = true
+emission = Color(0.847059, 0.407843, 0.317647, 1)
+emission_energy_multiplier = 2.74
+backlight = Color(0.839216, 0, 0, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_inxja"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496, 1), 0.0, 0.0, 0, 0, Vector2(0.744, 0.305263), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_tsoes"]
+curve = SubResource("Curve_inxja")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5612p"]
+emission_shape = 1
+emission_sphere_radius = 0.7
+direction = Vector3(3, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 27.02
+initial_velocity_max = 27.02
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+angle_min = 34.0
+angle_max = 111.8
+scale_min = 0.02
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_tsoes")
+turbulence_noise_strength = 6.41
+turbulence_noise_scale = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xafry"]
+size = Vector2(1, 2)
+center_offset = Vector3(0, -4.85, -3.015)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1k2st"]
+albedo_color = Color(0.952941, 0.968627, 0.584314, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_toq08"]
+
+[node name="candle" type="Node3D"]
+transform = Transform3D(0.535, 0, 0, 0, 0.535, 0, 0, 0, 0.535, 0, 0.296551, 0)
+
+[node name="fire" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.0171466, 0.199801, 0.495994, 0.533041, -0.0457446, 1.26231e-09, 0.0424094, 0.494178, -0.200536, -0.0108727, 0.504519, 0.0024218)
+material_override = SubResource("StandardMaterial3D_vemfr")
+amount = 1
+lifetime = 0.1
+speed_scale = 0.4
+explosiveness = 0.55
+randomness = 1.0
+visibility_aabb = AABB(-1.05562, -0.221062, -0.113623, 2.11125, 0.442124, 0.278027)
+trail_lifetime = 4.35
+process_material = SubResource("ParticleProcessMaterial_5612p")
+draw_pass_1 = SubResource("PlaneMesh_xafry")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1.86916, 0, 0, 0, 1.86916, 0, 0, 0, 1.86916, 0, 0.260304, 0.00236869)
+light_color = Color(0.670588, 0.32549, 0.2, 1)
+light_energy = 0.6
+light_indirect_energy = 0.2
+light_volumetric_fog_energy = 0.1
+shadow_bias = 0.6
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.515, 0, 0, 0, 0.3, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_1k2st")
+mesh = SubResource("CylinderMesh_toq08")

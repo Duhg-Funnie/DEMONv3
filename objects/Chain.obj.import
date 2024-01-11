@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cfebnaa8vnb6t"
+path="res://.godot/imported/Chain.obj-d4034d5a26a26c851d94627b6ebdebe3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Chain.obj-d4034d5a26a26c851d94627b6ebdebe3.mesh"]
+
+source_file="res://objects/Chain.obj"
+dest_files=["res://.godot/imported/Chain.obj-d4034d5a26a26c851d94627b6ebdebe3.mesh", "res://.godot/imported/Chain.obj-d4034d5a26a26c851d94627b6ebdebe3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
