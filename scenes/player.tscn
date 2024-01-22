@@ -114,10 +114,29 @@ gi_mode = 0
 visibility_range_begin = 2.5
 mesh = SubResource("CapsuleMesh_mujcg")
 
-[node name="head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.481444, -0.348169)
+[node name="SpringArm3D" type="SpringArm3D" parent="body"]
+transform = Transform3D(2.38095, 2.60548e-08, 3.54791e-08, 8.03819e-09, 2.38095, -2.21744e-09, 0, 2.21744e-09, 2.38095, -5.67664e-07, 0.794229, 0.0451882)
+collision_mask = 3
+spring_length = 0.5
+margin = 0.5
 
-[node name="flash_light" type="SpotLight3D" parent="head"]
+[node name="Camera3D" type="Camera3D" parent="body/SpringArm3D"]
+transform = Transform3D(0.606061, 0, 0, 0, 0.606061, 0, 0, 0, 0.606061, 0, -0.00919116, -0.01788)
+current = true
+fov = 57.0
+script = ExtResource("4_jgqki")
+
+[node name="Pixelator" type="MeshInstance3D" parent="body/SpringArm3D/Camera3D"]
+transform = Transform3D(2.805, 0, 0, 0, 2.805, 0, 0, 0, 2.805, 0, 2.38419e-07, -1.26448)
+visible = false
+cast_shadow = 0
+mesh = SubResource("QuadMesh_0ju1v")
+surface_material_override/0 = SubResource("ShaderMaterial_qsxh0")
+
+[node name="head" type="Node3D" parent="body/SpringArm3D"]
+transform = Transform3D(1, -1.0943e-08, -1.49012e-08, -3.37604e-09, 1, 9.31323e-10, 3.14418e-18, -9.31323e-10, 1, 2.50962e-07, -0.0338891, -0.816836)
+
+[node name="flash_light" type="SpotLight3D" parent="body/SpringArm3D/head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0038507, 1.06122)
 light_color = Color(1, 1, 0.901961, 1)
 light_energy = 0.881
@@ -132,14 +151,14 @@ spot_attenuation = 2.2974
 spot_angle = 25.0
 spot_angle_attenuation = 0.933035
 
-[node name="selector" type="RayCast3D" parent="head"]
+[node name="selector" type="RayCast3D" parent="body/SpringArm3D/head"]
 transform = Transform3D(0.975, 0, 0, 0, -0.0107204, -0.974941, 0, 0.974941, -0.0107204, 0, 0.0122943, 0.0136931)
 target_position = Vector3(0, -4.33, 0)
 collide_with_bodies = false
 debug_shape_thickness = 3
 script = ExtResource("3_fusd2")
 
-[node name="crosshair" type="Sprite3D" parent="head/selector"]
+[node name="crosshair" type="Sprite3D" parent="body/SpringArm3D/head/selector"]
 transform = Transform3D(1.395, 0, 0, 0, -0.0367602, -1.39452, 0, 1.39452, -0.0367602, 0.002, -5.60339, 0.0216947)
 cast_shadow = 0
 offset = Vector2(-0.505, -1.61)
@@ -147,68 +166,50 @@ no_depth_test = true
 render_priority = 2
 texture = ExtResource("5_qg2yq")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0338889, 0.816836)
-collision_mask = 3
-spring_length = 0.5
-margin = 0.5
-
-[node name="Camera3D" type="Camera3D" parent="head/SpringArm3D"]
-transform = Transform3D(0.606061, 0, 0, 0, 0.606061, 0, 0, 0, 0.606061, 0, -0.00919116, -0.01788)
-current = true
-fov = 57.0
-script = ExtResource("4_jgqki")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="head/SpringArm3D/Camera3D"]
-transform = Transform3D(2.805, 0, 0, 0, 2.805, 0, 0, 0, 2.805, 0, 2.38419e-07, -1.26448)
-cast_shadow = 0
-mesh = SubResource("QuadMesh_0ju1v")
-surface_material_override/0 = SubResource("ShaderMaterial_qsxh0")
-
-[node name="r_arm" type="Node3D" parent="head"]
+[node name="r_arm" type="Node3D" parent="body/SpringArm3D/head"]
 transform = Transform3D(0.977731, 0.162616, 0.132654, -0.164066, 0.986449, 0, -0.130857, -0.0217641, 0.991162, -0.175044, 0.0154607, 0.335145)
 
-[node name="r_pistol" type="CollisionShape3D" parent="head/r_arm"]
+[node name="r_pistol" type="CollisionShape3D" parent="body/SpringArm3D/head/r_arm"]
 transform = Transform3D(0.128953, -0.0119655, 0.0515632, 0.0144212, 0.0355696, -0.546211, 0.00794311, 0.129679, 0.154578, 1.00732, -0.444874, -0.0421016)
 shape = SubResource("ConvexPolygonShape3D_napr1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="head/r_arm/r_pistol"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="body/SpringArm3D/head/r_arm/r_pistol"]
 transform = Transform3D(1, -1.76951e-08, -5.96046e-08, 1.30385e-08, 1, 0, -1.86265e-09, -9.31323e-10, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_6wqar")
 skeleton = NodePath("../../../l_arm")
 surface_material_override/0 = SubResource("StandardMaterial3D_xirh0")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="head/r_arm/r_pistol"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="body/SpringArm3D/head/r_arm/r_pistol"]
 transform = Transform3D(0.80556, -0.0520355, 0.149552, 0.0562109, 0.595964, -2.11341, 0.00129782, 0.232125, 0.306113, 0.0911682, -1.09344, 0.353138)
 mesh = SubResource("BoxMesh_6wqar")
 skeleton = NodePath("../../../l_arm")
 surface_material_override/0 = SubResource("StandardMaterial3D_xirh0")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="head/r_arm/r_pistol"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="body/SpringArm3D/head/r_arm/r_pistol"]
 transform = Transform3D(0.346084, 0.0130269, -0.0225181, -0.00317478, -0.0563295, -1.99412, -0.00139813, 0.174905, -0.0359376, -0.0165186, -0.639703, -0.262502)
 mesh = SubResource("BoxMesh_6wqar")
 skeleton = NodePath("../../../l_arm")
 surface_material_override/0 = SubResource("StandardMaterial3D_xirh0")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="head/r_arm/r_pistol"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="body/SpringArm3D/head/r_arm/r_pistol"]
 transform = Transform3D(0.115353, 0.00318927, -0.00468099, -0.00105119, -0.0112461, -0.406214, -0.000566037, 0.0349789, -0.00730384, -0.00664616, 0.643886, -0.426626)
 mesh = SubResource("BoxMesh_6wqar")
 skeleton = NodePath("../../../l_arm")
 surface_material_override/0 = SubResource("StandardMaterial3D_xirh0")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="head/r_arm/r_pistol"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="body/SpringArm3D/head/r_arm/r_pistol"]
 transform = Transform3D(0.114434, 0.000710968, 0.0541698, 0.013296, -0.0578475, -0.371883, 0.00120465, 0.0323018, -0.0374198, 0.0491867, -0.641343, 0.0368596)
 mesh = SubResource("BoxMesh_6wqar")
 skeleton = NodePath("../../../l_arm")
 surface_material_override/0 = SubResource("StandardMaterial3D_xirh0")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="head/r_arm/r_pistol"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="body/SpringArm3D/head/r_arm/r_pistol"]
 transform = Transform3D(0.0949994, 0.000244342, -3.25963e-09, 5.81611e-07, -0.000122145, 0.0769999, 0.000331612, -0.0699995, -0.000134397, 0.0393009, -0.00403655, -0.51919)
 mesh = SubResource("CylinderMesh_x6wlm")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_xirh0")
 
-[node name="r_bam" type="Sprite3D" parent="head/r_arm/r_pistol"]
+[node name="r_bam" type="Sprite3D" parent="body/SpringArm3D/head/r_arm/r_pistol"]
 transform = Transform3D(1, -2.98023e-08, -1.07288e-06, -2.5332e-07, 1, 4.64916e-06, 4.79631e-08, 2.23517e-08, 1, 0.253407, -0.414765, -1.17805)
 visible = false
 sorting_offset = -3.0
@@ -218,13 +219,13 @@ billboard = 1
 double_sided = false
 texture = ExtResource("9_7maj3")
 
-[node name="l_arm" type="Node3D" parent="head"]
+[node name="l_arm" type="Node3D" parent="body/SpringArm3D/head"]
 transform = Transform3D(0.980944, -0.123505, -0.149984, 0.124918, 0.992167, 0, 0.148809, -0.0187356, 0.988688, 0.150362, 0.0154607, 0.184147)
 
-[node name="l_pickaxe" type="CollisionShape3D" parent="head/l_arm"]
-transform = Transform3D(0.997357, -0.0721771, 0.00840792, 0.0721081, 0.997364, 0.00825469, -0.00898099, -0.0076266, 0.999931, -2.01229, -0.210437, -1.43313)
+[node name="l_pickaxe" type="CollisionShape3D" parent="body/SpringArm3D/head/l_arm"]
+transform = Transform3D(0.997357, -0.0721771, 0.00840791, 0.0721081, 0.997364, 0.00825469, -0.00898106, -0.00762675, 0.999931, -2.01229, -0.210437, -1.43313)
 
-[node name="l_pickaxe_mesh" type="MeshInstance3D" parent="head/l_arm/l_pickaxe"]
+[node name="l_pickaxe_mesh" type="MeshInstance3D" parent="body/SpringArm3D/head/l_arm/l_pickaxe"]
 transform = Transform3D(-0.0239667, -0.075814, -0.00882404, -0.0250756, 0.0165564, -0.0741424, 0.0720892, -0.0194461, -0.0287236, 1.33574, -0.102214, 2.07185)
 sorting_offset = -5.0
 material_override = ExtResource("9_k241y")
@@ -405,7 +406,6 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 
 [node name="ouch" type="ColorRect" parent="player_gui/ui_screen"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.94902, 0.172549, 0.533333, 0.156863)

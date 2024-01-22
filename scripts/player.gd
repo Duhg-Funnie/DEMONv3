@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var enemy_aim = $enemy_aim
 
 var speed = 7.0
-const JUMP_VELOCITY = 7
+const JUMP_VELOCITY = 10
 const mouse_sens = 0.2
 var score=0
 var jump=0

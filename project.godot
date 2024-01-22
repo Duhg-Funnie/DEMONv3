@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.643137, 0.701961, 0.94902, 1)
 boot_splash/image="res://textures/thatsgames_1.png"
 boot_splash/fullsize=false
-config/icon="res://icon.svg"
+config/icon="res://textures/thatsgames_1.png"
 
 [autoload]
 

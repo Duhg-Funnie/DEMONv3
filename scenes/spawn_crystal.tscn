@@ -17,8 +17,8 @@ radial_accel_min = -32.43
 radial_accel_max = 10.81
 
 [sub_resource type="SphereMesh" id="SphereMesh_yxqxj"]
-radius = 0.01
-height = 0.01
+radius = 0.05
+height = 0.05
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1gl7"]
 transparency = 1
@@ -65,8 +65,8 @@ top_level = true
 shape = SubResource("SphereShape3D_l63g4")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="spawn_crystal"]
-transform = Transform3D(6.785, 0, 0, 0, 6.785, 0, 0, 0, 6.785, -0.0386044, -0.731326, 0)
-amount = 30
+transform = Transform3D(6.785, 0, 0, 0, 6.785, 0, 0, 0, 6.785, -0.0386044, 0.434109, 0)
+amount = 50
 lifetime = 0.2
 speed_scale = 0.2
 explosiveness = 0.06
@@ -75,7 +75,6 @@ draw_pass_1 = SubResource("SphereMesh_yxqxj")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="spawn_crystal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0386044, -0.0239811, 0)
-visible = false
 light_energy = 0.824
 light_indirect_energy = 0.732
 light_volumetric_fog_energy = 7.899
@@ -109,6 +108,7 @@ text = "NAME"
 
 [node name="crystal_hum" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_uttaj")
+volume_db = 5.766
 autoplay = true
 max_distance = 120.0
 panning_strength = 1.38
