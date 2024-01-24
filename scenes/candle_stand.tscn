@@ -1,15 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdfgioj7p6t8p"]
+[gd_scene load_steps=15 format=3 uid="uid://bdfgioj7p6t8p"]
 
 [ext_resource type="PackedScene" uid="uid://eg8wyyptx0aw" path="res://objects/Candle-stand.glb" id="1_8boa1"]
+[ext_resource type="Texture2D" uid="uid://blut7necsub18" path="res://textures/texture_dirt.png" id="2_hlq5s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nat55"]
 resource_name = "Material"
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.141176, 0.141176, 0.141176, 1)
-metallic = 0.8
-metallic_specular = 0.75
-roughness = 0.3
+albedo_color = Color(0.305882, 0.396078, 1, 1)
+albedo_texture = ExtResource("2_hlq5s")
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.35
+uv1_scale = Vector3(1.335, 1.335, 1.335)
+uv1_triplanar = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2m6m6"]
 _surfaces = [{

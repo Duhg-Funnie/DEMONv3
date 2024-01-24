@@ -356,7 +356,7 @@ func _input(event):
 			
 			PlayerVariables.pistol_reserve-=30
 			await get_tree().create_timer(0.3).timeout
-			PlayerVariables.pistol_loaded=30
+			PlayerVariables.pistol_loaded=480
 		
 	
 		#escape to exit
