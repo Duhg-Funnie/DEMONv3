@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bh6fcxst5vqc3"
+path="res://.godot/imported/Creepy church.mp3-6b206b369cf5393c153535377acfc738.mp3str"
+
+[deps]
+
+source_file="res://sounds/Creepy church.mp3"
+dest_files=["res://.godot/imported/Creepy church.mp3-6b206b369cf5393c153535377acfc738.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

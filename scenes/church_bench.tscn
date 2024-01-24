@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dijb0xby8ajkl" path="res://textures/texture_grass.jpg" id="2_lqhol"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i56ig"]
-albedo_color = Color(0.592157, 0.337255, 0, 1)
+albedo_color = Color(0.341176, 0.0784314, 0, 1)
 albedo_texture = ExtResource("2_lqhol")
 metallic = 0.58
 metallic_specular = 0.0
